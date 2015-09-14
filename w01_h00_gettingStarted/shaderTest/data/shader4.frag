@@ -17,7 +17,7 @@ void main() {
 //     vec2 p = vec2(cos(u_time * .5), sin(u_time*.5))*.25+.5;
     float pct = F(st.x,abs(sin(u_time)),1.);
     //pct *= F(st.y, abs(sin(u_time*0.5)),.1);
-    color = vec3(pct);
+    color = vec3(pct);∫
     //color = vec3(pct*.5);
     
     gl_FragColor = vec4(color,1.0);
