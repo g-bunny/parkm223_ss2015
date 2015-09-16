@@ -1,0 +1,10 @@
+#ifdef GL_ES
+precision mediump float;
+#endif
+
+uniform float u_time;
+uniform float u_mouse;
+
+void main(){
+	gl_FragColor = vec4();
+}
