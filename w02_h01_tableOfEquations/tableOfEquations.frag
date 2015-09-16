@@ -15,7 +15,7 @@ float plot(vec2 everyPixel, float percentage){
 void main() {
 	vec2 everyPixel = gl_FragCoord.xy/u_resolution;
 	//exponent float set up for trying out different values: 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5
-	float exponent = 1.0;
+	float exponent = u_mouse.x / u_resolution.x;
 
 	//grid starts here.
 	//first row
@@ -25,9 +25,9 @@ void main() {
 	//third row
 	// float y = 1.0 - pow(abs(sin(PI * everyPixel.x/2.0)),exponent);
 	//fourth row
-	// float y = pow(min(cos(PI * everyPixel.x/2.0),1.0-abs(everyPixel.x)),exponent);
+	float y = pow(min(cos(PI * everyPixel.x/2.0),1.0-abs(everyPixel.x)),exponent);
 	//fifth row
-	float y = 1.0 - pow(max(0.0, abs(everyPixel.x) * 2.0 - 1.0), exponent);
+	// float y = 1.0 - pow(max(0.0, abs(everyPixel.x) * 2.0 - 1.0), exponent);
 	vec3 color = vec3(y);
 
 	float percentage = plot(everyPixel,y);

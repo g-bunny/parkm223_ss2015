@@ -29,7 +29,7 @@ void main(){
 	vec2 everyPixel = gl_FragCoord.xy/u_resolution;
 
 	//can play around with exponent float to test different values
-	float exponent = 0.5;
+	float exponent = u_mouse.x / u_resolution.x;
 	float y = quadraticBezier(exponent,everyPixel.x,everyPixel.y);
 	vec3 color = vec3(y);
 	
