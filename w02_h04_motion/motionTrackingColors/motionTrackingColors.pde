@@ -1,3 +1,5 @@
+//Based off of Daniel Shiffman - Learning Processing - Example 16-11: Simple Color Tracking
+
 import processing.video.*;
 
 // Variable for capture device
