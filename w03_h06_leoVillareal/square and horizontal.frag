@@ -32,19 +32,17 @@ void main(){
 	vec3 mixedMix1 = vec3(y);
 	vec3 mixedMix2 = vec3(y);
 	vec3 mixedMix3 = vec3(y);
-	
+		float edgeX = abs(0.5 - st.x);
+	float edgeY = abs(0.5 - st.y);
 	vec3 finalColor = vec3(y);
 
-		color = mix(redOrange, darkRed, 1.0/st.y);
-		color2 = mix(orange, lightYellow, 1.0/st.y);
-		color3 = mix(blue, lightYellow, st.y);
-		color4 = mix(redOrange, lightBlue, st.y);
-		color5 = mix(redOrange, black, st.y);
-
-		mixedMix1 = mix(color, color2, st.y);
-		mixedMix3 = mix(color3, color4, st.y);
-
-	finalColor = mix(color,color2,st.y);
+if (edgeX > 0.40 || edgeY > 0.40){
+	finalColor.r = smoothstep(0.33, timeTransition, st.y);
+} else{
+		color3 = mix(blue, lightYellow, timeTransition);
+		color4 = mix(redOrange, lightBlue, timeTransition);
+	finalColor = mix(color3,color4,st.y);
+}
 	gl_FragColor = vec4(finalColor,1.0);
 
 }

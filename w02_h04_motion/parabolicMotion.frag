@@ -12,6 +12,8 @@ void main(){
 	vec2 pixelCoordinates = gl_FragCoord.xy/u_resolution;
 	float exponent = 2.0;
 
+	
+
 	float y = 0.8 - pow(abs(pixelCoordinates.x - 0.6),exponent);
 	vec3 color = vec3(y);
 	float percentage = plot(pixelCoordinates,y);

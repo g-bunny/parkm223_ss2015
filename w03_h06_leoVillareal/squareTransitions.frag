@@ -29,6 +29,13 @@ void main(){
 	vec3 color4 = vec3(y);
 	vec3 color5 = vec3(y);
 	vec3 finalColor = vec3(y);
+	float edgeX = abs(0.5 - st.x);
+	float edgeY = abs(0.5 - st.y);
+
+if (edgeX > 0.40 || edgeY > 0.40){
+	color = mix(black, black, st.y);
+}
+else{
 	// if (u_resolution.y > 0.5){
 		color = mix(lightYellow, lightBlue, st.y);
 	// }
@@ -44,7 +51,17 @@ void main(){
 	// }
 		// if (u_resolution.y > 0.5){
 		color5 = mix(redOrange, black, st.y);
+	}
+	// }
 
+// }
+	// if (mod(u_time, 4.0)<2.0){
+	// 	finalColor = mix(color, color2, timeTransition);
+	// } else if (mod(u_time, 4.0) >=2.0 && mod(u_time, 6.0) < 4.0){
+	// 	finalColor = mix(color, color2, timeTransition);
+	// // } else {
+	// // 	finalColor = mix (color, color3, timeTransition);
+	// }
 
 	finalColor = mix(color,color2,timeTransition);
 	gl_FragColor = vec4(finalColor,1.0);

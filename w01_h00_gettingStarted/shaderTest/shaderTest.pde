@@ -3,7 +3,7 @@ PShader shader;
 void setup() {
   size(640, 360, P2D);
   noStroke();
-  shader = loadShader("shader5.frag");
+  shader = loadShader("shader4.frag");
 }
 
 void draw() {

@@ -1,7 +1,3 @@
-//italian
-//somehow i got a flag and i dont understand how...
-//ethiopian? but the yellow stopped working
-// i honestly dont understand...
 
 #ifdef GL_ES
 precision mediump float;
