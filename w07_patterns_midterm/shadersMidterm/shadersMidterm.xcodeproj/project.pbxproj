@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		10B28AE41BE0CC0A007DCDFD /* Painting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10B28AE21BE0CC0A007DCDFD /* Painting.cpp */; };
+		10B28AE71BE0EB71007DCDFD /* Walls.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 10B28AE51BE0EB71007DCDFD /* Walls.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -62,6 +63,8 @@
 /* Begin PBXFileReference section */
 		10B28AE21BE0CC0A007DCDFD /* Painting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Painting.cpp; sourceTree = "<group>"; };
 		10B28AE31BE0CC0A007DCDFD /* Painting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Painting.h; sourceTree = "<group>"; };
+		10B28AE51BE0EB71007DCDFD /* Walls.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Walls.cpp; sourceTree = "<group>"; };
+		10B28AE61BE0EB71007DCDFD /* Walls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Walls.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../../OpenFrameworks/libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../../OpenFrameworks/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -188,6 +191,8 @@
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				10B28AE21BE0CC0A007DCDFD /* Painting.cpp */,
 				10B28AE31BE0CC0A007DCDFD /* Painting.h */,
+				10B28AE51BE0EB71007DCDFD /* Walls.cpp */,
+				10B28AE61BE0EB71007DCDFD /* Walls.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -289,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				10B28AE71BE0EB71007DCDFD /* Walls.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				10B28AE41BE0CC0A007DCDFD /* Painting.cpp in Sources */,
 			);

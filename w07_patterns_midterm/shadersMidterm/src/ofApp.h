@@ -1,7 +1,8 @@
 #pragma once
 
 #include "ofMain.h"
-#include "Painting.h"
+//#include "Painting.h"
+#include "Walls.h"
 
 class ofApp : public ofBaseApp{
     
@@ -25,9 +26,13 @@ public:
     //    ofBoxPrimitive box;
     float mouseX;
     float mouseY;
-    Painting * firstPainting;
-    Painting * secPainting;
-    Painting * thirdPainting;
-    Painting * fourthPainting;
-    Painting * fifthPainting;
+//    Painting * firstPainting;
+//    Painting * secPainting;
+//    Painting * thirdPainting;
+//    Painting * fourthPainting;
+//    Painting * fifthPainting;
+    
+    ofColor wallColor = ofColor(230,230,230);
+    
+    Walls * gallery;
 };
