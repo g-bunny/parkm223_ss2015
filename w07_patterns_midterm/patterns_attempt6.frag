@@ -33,9 +33,9 @@ void main() {
     
     
     vec2 st_f = fract(st);
-    color.r = 214.0/255.0;
+    color.r = 206.0/255.0;
     color.g = 206.0/255.0;
-    color.b = 192.0/255.0;
+    color.b = 206.0/255.0;
     
     // float pct = ovalGradient(st_f,.5, .1);
     float pct = threadedEdges(st_f, .1);
