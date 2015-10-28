@@ -145,13 +145,20 @@ Walls::Walls(ofColor frontColor, ofColor sideColor, ofColor topColor, int boxWid
     linesLeft.addVertex(frontBotLeft);
     linesLeft.addVertex(backBotLeft);
     
-    this->firstPainting = new Painting(-boxWidth/2 + 100, boxWidth/8 - 100, -boxHeight/2 + 100, boxHeight/2 - 100, -boxDepth/2 + 50, -boxDepth/2, 1);
-//    this->secPainting = new Painting(-100, 200, -150, 150, 2);
-//    this->thirdPainting = new Painting(300, 700, -200, 200, 3);
-//    this->fourthPainting = new Painting(800, 1100, -150, 150, 4);
-//    this->fifthPainting = new Painting(1200, 1600, -225, 225, 5);
-
+    // 1 is shown on left wall
+    this->firstPainting = new Painting(-boxWidth/2,-boxWidth/2 + 50, -boxHeight/2 + 100, boxHeight/2 - 100, -boxDepth/2 +100, boxDepth/2 - 100, 1);
     
+    // 4 is shown on right wall
+    this->fourthPainting = new Painting(boxWidth/2 -50, boxWidth/2, -boxHeight/2 + 150, boxHeight/2 - 150, -boxDepth/2 +150, boxDepth/2 - 150, 4);
+    
+    // 2 & 3 are shown on back wall
+    this->secPainting = new Painting(-boxWidth/2+ 100, boxWidth/2- 100 -800, -boxHeight/2 + 150, boxHeight/2 - 150, -boxDepth/2 + 50, -boxDepth/2, 2);
+    this->thirdPainting = new Painting(boxWidth/2 - 800, boxWidth/2- 100, -boxHeight/2 + 100, boxHeight/2 - 100, -boxDepth/2 + 50, -boxDepth/2, 3);
+    // 5 is on front wall
+    this->fifthPainting = new Painting(- boxWidth/2 + 300, boxWidth/2 - 300, -boxHeight/2 + 100, boxHeight/2 - 100, boxDepth/2 - 50, boxDepth/2, 5);
+    this->fifthDynamic = new Painting(- boxWidth/2 + 300, boxWidth/2 - 300, -boxHeight/2 + 100, boxHeight/2 - 100, boxDepth/2 - 50, boxDepth/2, -5);
+
+    this->floor = new Painting(-boxWidth/2, boxWidth/2, boxHeight/2, boxHeight/2, -boxDepth/2, boxDepth/2, 10);
 }
 
 void Walls::draw(){
@@ -167,8 +174,19 @@ void Walls::draw(){
 //        faceBack.draw();
         ofSetColor(0,0,0);
         linesBack.draw();
+    fourthPainting->draw();
     firstPainting->draw();
+    if(yRotateState != 2){
+        secPainting->draw();
+        thirdPainting->draw();
+    }
+    if(yRotateState == 1 || yRotateState == 3){
+           fifthPainting->draw();
+    }
+    if(yRotateState == 2){
+            fifthDynamic->draw();
 
+    }
 //        ofSetColor(topColor);
 //        faceTop.draw();
         ofSetColor(0,0,0);
@@ -180,9 +198,9 @@ void Walls::draw(){
         ofSetColor(sideColor);
 //        faceRight.draw();
         ofSetColor(0,0,0);
-    
-        ofSetColor(topColor);
-        faceBot.draw();
+    floor->draw();
+//        ofSetColor(topColor);
+//        faceBot.draw();
         ofSetColor(0,0,0);
         linesBot.draw();
     linesLeft.draw();
@@ -194,7 +212,6 @@ void Walls::draw(){
 //        faceFront.draw();
 //        ofSetColor(0,0,0);
         linesFront.draw();
-//    secPainting->draw();
 //    thirdPainting->draw();
 //    fourthPainting->draw();
 //    fifthPainting->draw();
@@ -342,5 +359,8 @@ void Walls::rotateMe(){
             }
         }
     }
+    cout<<"x rotateState"<<xRotateState<<endl;
+    cout<<"y rotateState"<<yRotateState<<endl;
+
 }
 

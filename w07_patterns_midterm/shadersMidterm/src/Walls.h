@@ -48,10 +48,15 @@ public:
     float rotatez = 0.0;
 
     Painting * firstPainting;
+    Painting * firstDynamic;
     Painting * secPainting;
     Painting * thirdPainting;
     Painting * fourthPainting;
     Painting * fifthPainting;
+    Painting * fifthDynamic;
+    
+    Painting * floor;
+
     ofEasyCam cam;
 
 };

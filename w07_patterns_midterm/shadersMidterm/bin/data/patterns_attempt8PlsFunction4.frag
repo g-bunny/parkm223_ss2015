@@ -94,6 +94,6 @@ void main() {
     color = mix(color, vec3(0.40,0.02,0.402), splatterPattern(grid2, .1));
     
     vec2 grid3 = tile(st, 3.0);
-    color = mix(color, vec3(0.2, 0.7, 0.3), splatterPattern(grid3, .09));
+    color = mix(color, vec3(0.2, (abs(sin(u_time/4.))) *0.7, 0.3), splatterPattern(grid3, .09));
 	gl_FragColor = vec4(color,1.0);
 }

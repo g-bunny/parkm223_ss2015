@@ -28,6 +28,10 @@ Painting::Painting(float xStart, float xEnd, float yStart, float yEnd, float zSt
         shader.load("","strokesMonochrome.frag");
     } else if (index == 5){
         shader.load("","strokesGreenYellow.frag");
+    } else if (index == -5){
+        shader.load("","dynamicStrokesGreenYellow.frag");
+    } else if (index == 10){
+        shader.load("", "wood.frag");
     }
     plainCanvas.load("", "patterns_attempt8.frag");
 }
@@ -35,7 +39,32 @@ Painting::Painting(float xStart, float xEnd, float yStart, float yEnd, float zSt
 void Painting::draw(){
 //    cam.begin();
     
+    if (index == 10){
+            shader.begin();
+
+        glBegin(GL_QUADS);
+        glColor3f(1.,0.,0.);
+        glTexCoord2f(0., 0.);
+        glVertex3f(xStart, yEnd, zStart);
+        
+        glColor3f(1.,1.,0.);
+        glTexCoord2f(0., 1.);
+        glVertex3f(xStart,yEnd,zEnd);
+        
+        glColor3f(0.,1.,0.);
+        glTexCoord2f(1., 1.);
+        glVertex3f(xEnd,yEnd,zEnd);
+        
+        glColor3f(1.,0.,1.);
+        glTexCoord2f(1., 0.);
+        glVertex3f(xEnd,yEnd,zStart);
+        glEnd();
+            shader.end();
+        
+    }
+    else {
     shader.begin();
+    
     shader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
     shader.setUniform1f("u_time", ofGetElapsedTimef());
     //    shader.setUniform2f("u_mouse", mouseX / ofGetWidth(), mouseY / ofGetHeight());
@@ -62,6 +91,10 @@ void Painting::draw(){
     plainCanvas.begin();
     plainCanvas.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
     plainCanvas.setUniform1f("u_time", ofGetElapsedTimef());
+    
+    if (index ==1){
+        shader.begin();
+    }
     glBegin(GL_QUADS);
     glColor3f(1.,0.,0.);
     glTexCoord2f(0., 1.);
@@ -79,8 +112,15 @@ void Painting::draw(){
     glTexCoord2f(0., 0.);
     glVertex3f(xEnd,yStart,zStart);
     glEnd();
+    
+    if (index ==1){
+        shader.end();
+    }
 
-    //    //left side
+    //left side
+    if (index ==4){
+        shader.begin();
+    }
     glBegin(GL_QUADS);
     glColor3f(1.,0.,0.);
     glTexCoord2f(0., 1.);
@@ -98,6 +138,9 @@ void Painting::draw(){
     glTexCoord2f(0., 0.);
     glVertex3f(xStart,yEnd,zStart);
     glEnd();
+    if (index ==4){
+        shader.end();
+    }
 
     //    //bot side
     glBegin(GL_QUADS);
@@ -137,6 +180,7 @@ void Painting::draw(){
     glVertex3f(xEnd,yEnd,zStart);
     glEnd();
     plainCanvas.end();
+}
 //    cam.end();
 }
 
