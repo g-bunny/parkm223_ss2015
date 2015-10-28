@@ -145,11 +145,11 @@ Walls::Walls(ofColor frontColor, ofColor sideColor, ofColor topColor, int boxWid
     linesLeft.addVertex(frontBotLeft);
     linesLeft.addVertex(backBotLeft);
     
-    this->firstPainting = new Painting(-600., -200., -200., 200., 1);
-    this->secPainting = new Painting(-100, 200, -150, 150, 2);
-    this->thirdPainting = new Painting(300, 700, -200, 200, 3);
-    this->fourthPainting = new Painting(800, 1100, -150, 150, 4);
-    this->fifthPainting = new Painting(1200, 1600, -225, 225, 5);
+    this->firstPainting = new Painting(-boxWidth/2 + 100, boxWidth/8 - 100, -boxHeight/2 + 100, boxHeight/2 - 100, -boxDepth/2 + 50, -boxDepth/2, 1);
+//    this->secPainting = new Painting(-100, 200, -150, 150, 2);
+//    this->thirdPainting = new Painting(300, 700, -200, 200, 3);
+//    this->fourthPainting = new Painting(800, 1100, -150, 150, 4);
+//    this->fifthPainting = new Painting(1200, 1600, -225, 225, 5);
 
     
 }
@@ -167,7 +167,8 @@ void Walls::draw(){
 //        faceBack.draw();
         ofSetColor(0,0,0);
         linesBack.draw();
-    
+    firstPainting->draw();
+
 //        ofSetColor(topColor);
 //        faceTop.draw();
         ofSetColor(0,0,0);
@@ -181,7 +182,7 @@ void Walls::draw(){
         ofSetColor(0,0,0);
     
         ofSetColor(topColor);
-//        faceBot.draw();
+        faceBot.draw();
         ofSetColor(0,0,0);
         linesBot.draw();
     linesLeft.draw();
@@ -193,14 +194,15 @@ void Walls::draw(){
 //        faceFront.draw();
 //        ofSetColor(0,0,0);
         linesFront.draw();
-    firstPainting->draw();
-    secPainting->draw();
-    thirdPainting->draw();
-    fourthPainting->draw();
-    fifthPainting->draw();
+//    secPainting->draw();
+//    thirdPainting->draw();
+//    fourthPainting->draw();
+//    fifthPainting->draw();
 
     ofPopMatrix();
     rotateMe();
+    cam.end();
+//
 }
 
 void Walls::rotateMe(){

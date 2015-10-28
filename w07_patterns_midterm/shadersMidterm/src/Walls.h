@@ -52,5 +52,6 @@ public:
     Painting * thirdPainting;
     Painting * fourthPainting;
     Painting * fifthPainting;
+    ofEasyCam cam;
 
 };

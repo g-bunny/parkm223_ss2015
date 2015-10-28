@@ -10,15 +10,15 @@
 
 class Painting{
 public:
-    Painting(float xStart, float xEnd, float yStart, float yEnd, int index);
+    Painting(float xStart, float xEnd, float yStart, float yEnd, float zStart, float zEnd, int index);
     void draw();
     void update();
     
-    float xStart, xEnd, yStart, yEnd;
+    float xStart, xEnd, yStart, yEnd, zStart, zEnd;
     int index;
     ofShader shader;
     ofShader plainCanvas;
-    ofEasyCam cam;
+//    ofEasyCam cam;
     ofBoxPrimitive box;
     
 };

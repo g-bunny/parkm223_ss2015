@@ -8,11 +8,14 @@
 
 #include "Painting.h"
 
-Painting::Painting(float xStart, float xEnd, float yStart, float yEnd, int index){
+Painting::Painting(float xStart, float xEnd, float yStart, float yEnd, float zStart, float zEnd, int index){
     this->xStart = xStart;
     this->xEnd = xEnd;
     this->yStart = yStart;
     this->yEnd = yEnd;
+    this->zStart = zStart;
+    this->zEnd = zEnd;
+    
     this->index = index;
     
     if (index ==1){
@@ -30,7 +33,7 @@ Painting::Painting(float xStart, float xEnd, float yStart, float yEnd, int index
 }
 
 void Painting::draw(){
-    cam.begin();
+//    cam.begin();
     
     shader.begin();
     shader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
@@ -39,19 +42,19 @@ void Painting::draw(){
     glBegin(GL_QUADS);
     glColor3f(1.,0.,0.);
     glTexCoord2f(0., 1.);
-    glVertex3f(xStart, yStart, 0);
+    glVertex3f(xStart, yStart, zStart);
     
     glColor3f(1.,1.,0.);
     glTexCoord2f(1., 1.);
-    glVertex3f(xEnd,yStart,0);
+    glVertex3f(xEnd,yStart,zStart);
     
     glColor3f(0.,1.,0.);
     glTexCoord2f(1., 0.);
-    glVertex3f(xEnd,yEnd,0);
+    glVertex3f(xEnd,yEnd,zStart);
     
     glColor3f(1.,0.,1.);
     glTexCoord2f(0., 0.);
-    glVertex3f(xStart,yEnd,0);
+    glVertex3f(xStart,yEnd,zStart);
     glEnd();
     shader.end();
     
@@ -62,79 +65,79 @@ void Painting::draw(){
     glBegin(GL_QUADS);
     glColor3f(1.,0.,0.);
     glTexCoord2f(0., 1.);
-    glVertex3f(xEnd, yEnd, 0);
+    glVertex3f(xEnd, yEnd, zStart);
     
     glColor3f(1.,1.,0.);
     glTexCoord2f(1., 1.);
-    glVertex3f(xEnd,yEnd,-50);
+    glVertex3f(xEnd,yEnd,zEnd);
     
     glColor3f(0.,1.,0.);
     glTexCoord2f(1., 0.);
-    glVertex3f(xEnd,yStart,-50);
+    glVertex3f(xEnd,yStart,zEnd);
     
     glColor3f(1.,0.,1.);
     glTexCoord2f(0., 0.);
-    glVertex3f(xEnd,yStart,0);
+    glVertex3f(xEnd,yStart,zStart);
     glEnd();
 
     //    //left side
     glBegin(GL_QUADS);
     glColor3f(1.,0.,0.);
     glTexCoord2f(0., 1.);
-    glVertex3f(xStart, yStart, 0);
+    glVertex3f(xStart, yStart, zStart);
     
     glColor3f(1.,1.,0.);
     glTexCoord2f(1., 1.);
-    glVertex3f(xStart,yStart,-50);
+    glVertex3f(xStart,yStart,zEnd);
     
     glColor3f(0.,1.,0.);
     glTexCoord2f(1., 0.);
-    glVertex3f(xStart,yEnd,-50);
+    glVertex3f(xStart,yEnd,zEnd);
     
     glColor3f(1.,0.,1.);
     glTexCoord2f(0., 0.);
-    glVertex3f(xStart,yEnd,0);
+    glVertex3f(xStart,yEnd,zStart);
     glEnd();
 
     //    //bot side
     glBegin(GL_QUADS);
     glColor3f(1.,0.,0.);
     glTexCoord2f(0., 1.);
-    glVertex3f(xEnd, yStart, 0);
+    glVertex3f(xEnd, yStart, zStart);
     
     glColor3f(1.,1.,0.);
     glTexCoord2f(1., 1.);
-    glVertex3f(xEnd,yStart,-50);
+    glVertex3f(xEnd,yStart,zEnd);
     
     glColor3f(0.,1.,0.);
     glTexCoord2f(1., 0.);
-    glVertex3f(xStart,yStart,-50);
+    glVertex3f(xStart,yStart,zEnd);
     
     glColor3f(1.,0.,1.);
     glTexCoord2f(0., 0.);
-    glVertex3f(xStart,yStart,0);
+    glVertex3f(xStart,yStart,zStart);
     glEnd();
 
     //    //top side
     glBegin(GL_QUADS);
     glColor3f(1.,0.,0.);
     glTexCoord2f(0., 1.);
-    glVertex3f(xStart, yEnd, 0);
+    glVertex3f(xStart, yEnd, zStart);
     
     glColor3f(1.,1.,0.);
     glTexCoord2f(1., 1.);
-    glVertex3f(xStart,yEnd,-50);
+    glVertex3f(xStart,yEnd,zEnd);
     
     glColor3f(0.,1.,0.);
     glTexCoord2f(1., 0.);
-    glVertex3f(xEnd,yEnd,-50);
+    glVertex3f(xEnd,yEnd,zEnd);
     
     glColor3f(1.,0.,1.);
     glTexCoord2f(0., 0.);
-    glVertex3f(xEnd,yEnd,0);
+    glVertex3f(xEnd,yEnd,zStart);
     glEnd();
     plainCanvas.end();
-    cam.end();
+//    cam.end();
 }
 
 void Painting::update(){
