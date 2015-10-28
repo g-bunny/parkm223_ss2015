@@ -17,10 +17,14 @@ Painting::Painting(float xStart, float xEnd, float yStart, float yEnd, int index
     
     if (index ==1){
         shader.load("", "patterns_attempt8PlsFunction4.frag");
-    } else if (index ==2){
-        shader.load("", "CoolPaintMarks3.frag");
     } else if (index ==3){
+        shader.load("", "CoolPaintMarks3.frag");
+    } else if (index ==2){
         shader.load("", "singleMark_rotated.frag");
+    } else if (index == 4){
+        shader.load("","strokesMonochrome.frag");
+    } else if (index == 5){
+        shader.load("","strokesGreenYellow.frag");
     }
     plainCanvas.load("", "patterns_attempt8.frag");
 }

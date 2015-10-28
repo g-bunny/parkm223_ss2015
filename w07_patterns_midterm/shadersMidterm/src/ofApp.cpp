@@ -7,8 +7,11 @@ void ofApp::setup(){
     //    shader.load("", "patterns_attempt8PlsFunction4.frag");
     //    plainCanvas.load("", "patterns_attempt8.frag");
     this->firstPainting = new Painting(-600., -200., -200., 200., 1);
-    this->secPainting = new Painting(-100, 300, -200, 200, 2);
-    this->thirdPainting = new Painting(400, 700, -150, 150, 3);
+    this->secPainting = new Painting(-100, 200, -150, 150, 2);
+    this->thirdPainting = new Painting(300, 700, -200, 200, 3);
+    this->fourthPainting = new Painting(800, 1100, -150, 150, 4);
+    this->fifthPainting = new Painting(1200, 1600, -225, 225, 5);
+
 }
 
 
@@ -22,6 +25,8 @@ void ofApp::draw(){
     firstPainting->draw();
     secPainting->draw();
     thirdPainting->draw();
+    fourthPainting->draw();
+    fifthPainting->draw();
 }
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){

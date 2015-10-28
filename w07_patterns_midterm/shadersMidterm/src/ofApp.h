@@ -28,4 +28,6 @@ public:
     Painting * firstPainting;
     Painting * secPainting;
     Painting * thirdPainting;
+    Painting * fourthPainting;
+    Painting * fifthPainting;
 };
