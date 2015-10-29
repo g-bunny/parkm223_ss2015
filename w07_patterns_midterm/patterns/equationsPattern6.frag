@@ -12,11 +12,6 @@ float plot(vec2 st, float percentage){
 	return smoothstep(percentage -0.02, percentage, st.y) - smoothstep(percentage, percentage + 0.02, st.y);
 }
 
-// vec3 woodLines(){
-// 	return
-// }
-
-
 vec2 rotate2D(vec2 _st, float _angle){
     _st -= 0.5;
     _st =  mat2(cos(_angle),-sin(_angle),
@@ -95,32 +90,15 @@ float thickStrokes(vec2 st, float seed1, float seed2, float seed3){
 void main() {
 
 	vec2 st = gl_FragCoord.xy/u_resolution;
-	//exponent float set up for trying out different values: 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5
-	float exponent = u_mouse.x / u_resolution.x;
-
+∫
 	// st.x -= .5;
 	st.y += .5;
 	// st.x *= .2;
 	vec2 grid =	tile(st, 5.);
 	float pct = thickStrokes(grid, 1.5, 2.0, 3.0);
-	// float pct = strokes(grid, 1.5, 2.0, 3.0);
-	// vec2 grid2 = tile(st, 12.);
-	// float pct2 = strokes(grid2, 1.5, 2.5, 2.0);
-	// st -= .1;
-	// float pct3 = strokes(grid2, 0.5, 3.5, 2.5);
-	// st += .2;
-	// vec2 grid4 = tile(st, 6.);
-	// float pct4 = strokes(grid2, 1.0, 2.0, 3.0);
 	vec3 color = vec3(0.);
 	color = canvasPattern(st, .1, .5, .1);
 
 	color = mix(color, vec3(0.0, 0.89, 0.92), pct);
-	// color = mix(color, vec3(.90, 1.0, 0.2), pct2);
-
-	// color = mix(color, vec3(.0, 0.9, 0.9), pct3);
-	// color = mix(color, vec3(.80, 0.2, 0.9), pct4);
-
-	// color = mix(color, vec3(0.2, 0.5, 0.9), percentage2);
-	// color = mix(color, vec3(0.9, 0.2, 0.5), percentage3);
 	gl_FragColor = vec4(color,1.0);
 }

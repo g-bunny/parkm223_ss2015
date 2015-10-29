@@ -66,16 +66,6 @@ float splatter(vec2 st, float radius){
     return pct;
 }
 
-float proceduralSplatter(vec2 st, float radius, float numCircles){
-    float pct = 0.;
-    st.x -= .5;
-    for (float i = 0.; i < numCircles; i++){
-        st.y -=(.3 / (i+1.));
-        pct +=smoothstep(radius + 1./numCircles, radius - .01, length(st));
-    }
-    return pct;
-}
-
 float splatterPattern(vec2 st, float radius){
     return splatter(st + vec2(0., -.1), radius + .1) +
             splatter(st + vec2(0., -.2), radius - .1) +
@@ -83,22 +73,14 @@ float splatterPattern(vec2 st, float radius){
             splatter(st + vec2(-.2, 0.), radius - .2) ;
 }
 
-
-// float procSplatterPattern(vec2 st, float radius){
-//     return proceduralSplatter(st + vec2(0., -.1), radius + .1, 9) +
-//             proceduralSplatter(st + vec2(0., -.2), radius - .1, 8) +
-//             proceduralSplatter(st + vec2(-.1, 0.), radius + .2, 7) +
-//             proceduralSplatter(st + vec2(-.2, 0.), radius - .2, 6) ;
-// }
 void main() {
 	vec2 st = gl_FragCoord.xy/u_resolution;
     vec3 color = canvasPattern(st, .1, .5, .1);
     
-    vec2 grid2 = tile(st,3.);
-    // grid2 = tile(st + vec2(cos(u_time),sin(u_time))*0.02 ,5.);
-    color = mix(color, vec3(0.1,0.52,0.402), proceduralSplatter(grid2, .01, 9.));
+    vec2 grid2 = tile(st,5.);
+    color = mix(color, vec3(0.40,0.02,0.402), splatterPattern(grid2, .1));
     
-    // vec2 grid3 = tile(st, 3.0);
-    // color = mix(color, vec3(0.2, 0.7, 0.3), splatterPattern(grid3, .09));
+    vec2 grid3 = tile(st, 3.0);
+    color = mix(color, vec3(0.2, 0.7, 0.3), splatterPattern(grid3, .09));
 	gl_FragColor = vec4(color,1.0);
 }

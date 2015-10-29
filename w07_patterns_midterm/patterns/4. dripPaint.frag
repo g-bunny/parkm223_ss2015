@@ -41,21 +41,9 @@ vec3 canvasPattern(vec2 st, float width, float radius, float xPos){
     return color;
 }
 
-float circle(vec2 st, float radius){
-    vec2 pos = vec2(0.5)-st;
-    radius *= 0.75;
-    return 1.-smoothstep(radius-(radius*0.05),radius+(radius*0.05),dot(pos,pos)*3.14);
-}
-
-float circlePattern(vec2 st, float radius) {
-    return  circle(st+vec2(0.,-.5), radius)+
-            circle(st+vec2(0.,.5), radius)+
-            circle(st+vec2(-.5,0.), radius)+
-            circle(st+vec2(.5,0.), radius);
-}
 float splatter(vec2 st, float radius){
     
-    st -= .6;
+    st -= .5;
     float pct = smoothstep(radius, radius -.01, length(st));
     st.x -= .18;
     pct += smoothstep(radius*.5, radius*.5 - .01, length(st));
@@ -78,13 +66,32 @@ float splatter(vec2 st, float radius){
     return pct;
 }
 
+float proceduralSplatter(vec2 st, float radius, float numCircles){
+    float pct = 0.;
+    st.x -= .5;
+    for (float i = 0.; i < numCircles; i++){
+        st.y -=(.3 / (i+1.));
+        pct +=smoothstep(radius + 1./numCircles, radius - .01, length(st));
+    }
+    return pct;
+}
+
+float splatterPattern(vec2 st, float radius){
+    return splatter(st + vec2(0., -.1), radius + .1) +
+            splatter(st + vec2(0., -.2), radius - .1) +
+            splatter(st + vec2(-.1, 0.), radius + .2) +
+            splatter(st + vec2(-.2, 0.), radius - .2) ;
+}
+
 void main() {
 	vec2 st = gl_FragCoord.xy/u_resolution;
     vec3 color = canvasPattern(st, .1, .5, .1);
     
-    vec2 grid2 = tile(st,5.);
+    vec2 grid2 = tile(st,3.);
     // grid2 = tile(st + vec2(cos(u_time),sin(u_time))*0.02 ,5.);
-    color = mix(color, vec3(0.40,0.92,0.902), splatter(grid2,abs(sin(u_time))));
+    color = mix(color, vec3(0.1,0.52,0.402), proceduralSplatter(grid2, .01, 9.));
     
+    // vec2 grid3 = tile(st, 3.0);
+    // color = mix(color, vec3(0.2, 0.7, 0.3), splatterPattern(grid3, .09));
 	gl_FragColor = vec4(color,1.0);
 }
