@@ -90,7 +90,7 @@ float thickStrokes(vec2 st, float seed1, float seed2, float seed3){
 void main() {
 
 	vec2 st = gl_FragCoord.xy/u_resolution;
-∫
+
 	// st.x -= .5;
 	st.y += .5;
 	// st.x *= .2;
