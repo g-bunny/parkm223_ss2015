@@ -65,20 +65,20 @@ void main() {
     //st.y -= .3;
     //st.x -= .25;
     //st*=2.;
-    st *= 30.;
-    vec3 color = vec3(0.);
-    float freq = noise(u_time);
+    st *= 50.;
+    vec3 color = vec3(0.459, 0.247, 0.129);
+    float freq = abs(sin(noise(u_time)));
     //st *= 1. -noise(freq);
     st = rotate2D(st, 2. *PI*1.5);
 
     //float feed = 1.0 - pow(abs(sin(PI * st.x/2.0)),1.0);
     st.x = noise(st);
     st.y = noise(st);
-    st *= 3.;
-    float pct = (rect(st, freq, freq*2.));
-    st.y += .1;
+    st *= 2.;
+    float pct = .3 * (rect(st, freq, freq*2.));
+    st.y += abs(sin(freq));
     st.x += .2;
-    float pct2 = (rect(st, .1, .5));
+    float pct2 = .1 *(rect(st, freq, freq*.1));
     color += pct + pct2;
     
     
