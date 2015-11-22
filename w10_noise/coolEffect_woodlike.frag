@@ -65,7 +65,7 @@ void main() {
     //st.y -= .3;
     //st.x -= .25;
     //st*=2.;
-    st *= 50.;
+    st *= 30.;
     vec3 color = vec3(0.459, 0.247, 0.129);
     float freq = abs(sin(noise(u_time)));
     //st *= 1. -noise(freq);
