@@ -29,8 +29,8 @@ vec2 rotate2D(vec2 _st, float _angle){
 void main () {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
     float pct = 0.0;
-    st *=1.;
-    pct = distance(st,vec2(0.5))/0.5;
+    st *=10.;
+    pct = distance(st,vec2(5.))/0.5;
 
     vec4 color = vec4(0.0);
     int subdivisions = 10;

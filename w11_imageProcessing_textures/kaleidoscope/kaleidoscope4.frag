@@ -29,8 +29,8 @@ vec2 rotate2D(vec2 _st, float _angle){
 void main () {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
     float pct = 0.0;
-    st *=1.;
-    pct = distance(st,vec2(0.5))/0.5;
+    st *=.5;
+    pct = distance(st,vec2(.25))/0.5;
 
     vec4 color = vec4(0.0);
     int subdivisions = 10;
@@ -38,7 +38,7 @@ void main () {
     float interval = abs(sin(fract(u_time*.1))) * abs(cos(fract(u_time*.1)));
 
     st *= pct;
-    st = rotate2D(st,2.*PI * interval);
+   // st = rotate2D(st,2.*PI * interval);
 
     if (mod(st.x,2.) == 1.){
         
