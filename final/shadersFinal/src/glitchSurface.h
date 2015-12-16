@@ -6,9 +6,19 @@
 //
 //
 
-#ifndef __shadersFinal__glitchSurface__
-#define __shadersFinal__glitchSurface__
+#include "ofMain.h"
 
-#include <stdio.h>
+class glitchSurface{
+public:
+    glitchSurface( float xStart, float xEnd, float yStart, float yEnd, float zStart, float zEnd, int index);
+    void draw();
+    void update();
+    
+    ofShader shader;
+    ofShader bgShader;
+    
+    float xStart, xEnd, yStart, yEnd, zStart, zEnd;
+    int index;
+    int bgActiveGlitch = 0;
 
-#endif /* defined(__shadersFinal__glitchSurface__) */
+};

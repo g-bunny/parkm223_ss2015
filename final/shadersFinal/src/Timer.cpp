@@ -7,3 +7,16 @@
 //
 
 #include "Timer.h"
+
+Timer::Timer(){
+}
+void Timer::start(){
+    initialTime = ofGetElapsedTimef();
+
+}
+void Timer::jumpedTime(){
+    jumpTimer = ofGetElapsedTimef() - initialTime;
+}
+void Timer::reset(){
+    initialTime = ofGetElapsedTimef();
+}

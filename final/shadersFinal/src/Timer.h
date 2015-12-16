@@ -6,9 +6,18 @@
 //
 //
 
-#ifndef __shadersFinal__Timer__
-#define __shadersFinal__Timer__
+#include "ofMain.h"
 
-#include <stdio.h>
-
-#endif /* defined(__shadersFinal__Timer__) */
+class Timer {
+public:
+    Timer();
+    void start();
+    void jumpedTime();
+    void reset();
+    
+    float jumpTimer;
+    float gameTimer;
+    float levelTimer;
+    float initialTime;
+    float elapsedTime;
+};
