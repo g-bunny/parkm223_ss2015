@@ -16,6 +16,7 @@ public:
     
     ofShader shader;
     ofShader bgShader;
+//    ofShader shader2;
     
     float xStart, xEnd, yStart, yEnd, zStart, zEnd;
     int index;

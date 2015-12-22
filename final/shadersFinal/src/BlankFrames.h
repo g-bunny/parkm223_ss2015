@@ -15,13 +15,13 @@ public:
     ofColor frontColor;
 
     int boxWidth, boxHeight, boxDepth;
-//
-//    ofMesh linesFront;
-//    ofMesh linesBack;
-//    ofMesh linesLeft;
-//    ofMesh linesRight;
-//    ofMesh linesTop;
-//    ofMesh linesBot;
+
+    ofMesh linesFront;
+    ofMesh linesBack;
+    ofMesh linesLeft;
+    ofMesh linesRight;
+    ofMesh linesTop;
+    ofMesh linesBot;
     
     ofMesh faceFront;
     ofMesh faceBack;
@@ -37,10 +37,10 @@ public:
 //    
 //    bool rotatable;
     
-//    int xRotateState = 0;
-//    int yRotateState = 0;
-//    int zRotateState = 0;
-//    
+    int xRotateState = 0;
+    int yRotateState = 0;
+    int zRotateState = 0;
+    
     float rotatex = 0.0;
     float rotatey = 0.0;
     float rotatez = 0.0;

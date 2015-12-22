@@ -5,8 +5,6 @@
 #include "BlankFrames.h"
 #include "Character.h"
 
-#define MAXBLANK = 10
-
 class ofApp : public ofBaseApp{
 
 	public:
@@ -35,8 +33,6 @@ class ofApp : public ofBaseApp{
     FrameShapes * fourthFrame;
     
     FrameShapes * bgFrame;
-    
-    //BlankFrames[MAXBLANK] * blankFrames;
     BlankFrames * blank1;
     BlankFrames * blank2;
     BlankFrames * blank3;

@@ -20,6 +20,8 @@ public:
     int boxWidth, boxHeight, boxDepth;
     float speedOfRotation;
     
+    
+    
     ofMesh linesFront;
     ofMesh linesBack;
     ofMesh linesLeft;
@@ -33,6 +35,8 @@ public:
     ofMesh faceRight;
     ofMesh faceTop;
     ofMesh faceBot;
+    
+    
     bool flipUp = false;
     bool flipDown = false;
     bool flipRight = false;

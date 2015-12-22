@@ -20,7 +20,12 @@ glitchSurface::glitchSurface( float xStart, float xEnd, float yStart, float yEnd
     if(index == 1){
         shader.load("", "shaders/circuitry17.frag");
         cout<<"shader 1 loaded"<<endl;
-    } else if(index == 3){
+    }
+    else if (index == 2){
+        shader.load("", "shaders/circuitry15.frag");
+        cout <<"shader 2 loaded"<<endl;
+    }
+    else if(index == 3){
         shader.load("", "shaders/circuitryCircles.frag");
         cout<<"shader 3 loaded"<<endl;
 
@@ -37,7 +42,11 @@ glitchSurface::glitchSurface( float xStart, float xEnd, float yStart, float yEnd
 
 void glitchSurface::draw(){
 
-    if(index >0 && index < 100){
+    if(index ==1 || index ==3 || index ==4){
+        shader.begin();
+        shader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
+        shader.setUniform1f("u_time", ofGetElapsedTimef());
+    } else if( index ==2){
         shader.begin();
         shader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
         shader.setUniform1f("u_time", ofGetElapsedTimef());
@@ -49,8 +58,6 @@ void glitchSurface::draw(){
         bgShader.setUniform1f("u_time", ofGetElapsedTimef());
         bgShader.setUniform1i("activate", bgActiveGlitch);
     }
-    
-    
     
     glBegin(GL_QUADS);
     glColor3f(1.,0.,0.);
@@ -70,9 +77,11 @@ void glitchSurface::draw(){
     glVertex3f(xStart,yEnd,zStart);
     glEnd();
     
-    if(index >0 && index < 100){
+    if(index ==1 || index ==3 || index ==4){
         shader.end();
-    } else if(index == 100){
+    } else if (index ==2){
+        shader.end();
+    }else if(index == 100){
         bgShader.end();
     }
     

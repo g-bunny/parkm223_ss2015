@@ -26,6 +26,21 @@ BlankFrames::BlankFrames(float xCenter, float yCenter, float zCenter, ofColor fr
     ofVec3f backBotLeft(-boxWidth/2, boxHeight/2, -boxDepth/2);
     ofVec3f backTopLeft(- boxWidth/2, -boxHeight/2, -boxDepth/2);
     ofVec3f backTopRight(boxWidth/2, -boxHeight/2, -boxDepth/2);
+    
+    linesFront = *new ofMesh();
+    linesBack = *new ofMesh();
+    linesTop = *new ofMesh();
+    linesLeft = *new ofMesh();
+    linesRight = *new ofMesh();
+    linesLeft = *new ofMesh();
+    
+    linesFront.setMode(OF_PRIMITIVE_LINE_STRIP);
+    linesBack.setMode(OF_PRIMITIVE_LINE_STRIP);
+    linesLeft.setMode(OF_PRIMITIVE_LINE_STRIP);
+    linesRight.setMode(OF_PRIMITIVE_LINE_STRIP);
+    linesTop.setMode(OF_PRIMITIVE_LINE_STRIP);
+    linesBot.setMode(OF_PRIMITIVE_LINE_STRIP);
+
     faceFront.addVertex(frontTopLeft);
     faceFront.addVertex(frontBotLeft);
     faceFront.addVertex(frontTopRight);

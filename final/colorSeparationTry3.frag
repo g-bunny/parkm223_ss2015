@@ -7,8 +7,8 @@ uniform vec2 u_mouse;
 uniform float u_time;
 uniform sampler2D u_tex0;
 
-#define freqStart -1.0
-#define freqInterval 0.1
+#define freqStart -.5
+#define freqInterval 0.9
 #define sampleSize 0.02           // How accurately to sample spectrum, must be a factor of 1.0
 
 void main()
@@ -25,11 +25,10 @@ void main()
     intensity = abs(intensity);
     intensity = pow((intensity*sampleSize),3.0)*4.0;
     
-    
     //set offsets
-    vec2 rOffset = vec2(-0.02,0)*intensity;
-    vec2 gOffset = vec2(0.0,0)*intensity;
-    vec2 bOffset = vec2(0.04,0)*intensity;
+    vec2 rOffset = vec2(-0.02,0.02)*intensity;
+    vec2 gOffset = vec2(0.0,0.)*intensity;
+    vec2 bOffset = vec2(0.04,0.01)*intensity;
     
     vec4 rValue = vec4(texture2D(u_tex0, st - rOffset));
     vec4 gValue = vec4(texture2D(u_tex0, st - gOffset));

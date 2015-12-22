@@ -19,7 +19,7 @@ FrameShapes::FrameShapes(float xCenter, float yCenter, float zCenter, int frameN
     this->xCenter = xCenter;
     this->yCenter = yCenter;
     this->frameNum = frameNum;
-    speedOfRotation = 4.0;
+    speedOfRotation = 3.0;
     faceFront = *new ofMesh();
     faceBack = *new ofMesh();
     faceTop = *new ofMesh();
@@ -129,10 +129,13 @@ FrameShapes::FrameShapes(float xCenter, float yCenter, float zCenter, int frameN
 
     if(frameNum ==1){
         this->frontFace = new glitchSurface(-boxWidth/2, boxWidth/2, -boxHeight/2, boxHeight/2, boxDepth/2, -boxDepth/2, 1);
-    } else if(frameNum ==3){
+    } else if(frameNum ==2){
+        this->frontFace = new glitchSurface(-boxWidth/2, boxWidth/2, -boxHeight/2, boxHeight/2, boxDepth/2, -boxDepth/2, 2);
+    }
+    else if(frameNum ==3){
         this->frontFace = new glitchSurface(-boxWidth/2, boxWidth/2, -boxHeight/2, boxHeight/2, boxDepth/2, -boxDepth/2, 3);
     } else if(frameNum ==4){
-        this->frontFace = new glitchSurface(-boxWidth/2, boxWidth/2, -boxHeight/2, boxHeight/2, boxDepth/2, -boxDepth/2, 4);
+       this->frontFace = new glitchSurface(-boxWidth/2, boxWidth/2, -boxHeight/2, boxHeight/2, boxDepth/2, -boxDepth/2, 4);
     } else if(frameNum ==100){
         this->frontFace = new glitchSurface(-boxWidth/2, boxWidth/2, -boxHeight/2, boxHeight/2, boxDepth/2, -boxDepth/2, 100);
     }
@@ -166,31 +169,22 @@ void FrameShapes::draw(){
     //        faceTop.draw();
     ofSetColor(0,0,0);
     linesTop.draw();
-    
     ofSetColor(sideColor);
             faceLeft.draw();
     ofSetColor(0,0,0);
     ofSetColor(sideColor);
             faceRight.draw();
     ofSetColor(0,0,0);
-    //floor->draw();
-    //        ofSetColor(topColor);
-    //        faceBot.draw();
-    ofSetColor(0,0,0);
     linesBot.draw();
     linesLeft.draw();
     linesRight.draw();
     
-    
-    
-            ofSetColor(frontColor);
-            faceFront.draw();
-    //        ofSetColor(0,0,0);
+    ofSetColor(frontColor);
+    faceFront.draw();
+    faceBack.draw();
+    faceTop.draw();
+    faceBot.draw();
     linesFront.draw();
-    //    thirdPainting->draw();
-    //    fourthPainting->draw();
-    //    fifthPainting->draw();
-    
     ofPopMatrix();
     if(rotatable == true){
         rotateMe();
